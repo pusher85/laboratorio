@@ -16,4 +16,4 @@
 /tmp
 
 # Ignora i file 
-#/config/environments/*.rb
+/config/environments/*.rb
