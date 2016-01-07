@@ -1,0 +1,59 @@
+<h2>Modifica intervento</h2>
+
+<%#= form_for :interventi, url: clienti_interventi_index_path do |f| %>
+<%= form_for :interventi, url: clienti_interventi_path(@clienti, @interventi), method: :patch do |f| %>
+
+	<% if @interventi.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@interventi.errors.count, "error") %> impediscono l'inserimento dell'intervento:
+      </h2>
+      <ul>
+        <% @interventi.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+	<p>Cliente: <%= @clienti.nome %> - [<%= @clienti.id %>]</p>
+	
+	
+	<p><%= f.label :cliente_id %><br><%= f.text_field :cliente_id, :value => @clienti.id, readonly: true %></p>
+	<p><%= f.label :data, 'Data (YYY - MM - DD)' %><br><%= f.text_field :data, :class => "datepicker", :type => "date", readonly: true %></p>
+
+	<p><%= f.label :intervento %><br><%= f.text_area :intervento, maxlength: 200 %></p>
+	<p><%= f.label :durata %><br><%= f.text_field :durata, maxlength: 2 %></p>
+	<p><%= f.label :note %><br><%= f.text_area :note, maxlength: 200 %></p>
+
+
+  <div class="switch">
+    <label>
+      Aperto
+      <%= f.check_box :chiuso, {:class => "myclass", :style => "mystyle"}, "1" %>
+      <span class="lever"></span>
+      Chiuso
+    </label>
+  </div>
+
+
+
+	<br>
+	<p>
+	<%= f.submit %>
+  	</p>
+<% end %>
+
+<script type="text/javascript">
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 3, // Creates a dropdown of 15 years to control year
+    format: 'yyyy/mm/dd'
+  });
+</script>
+
+
+<%= link_to 'Indietro', clienti_interventi_path %>
+
+<%= debug(params) %>

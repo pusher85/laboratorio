@@ -1,0 +1,23 @@
+	<p>
+	  <strong>Nome:</strong>
+	  <%= @clienti.nome %>
+	</p>
+	 
+	<p>
+	  <strong>Partita Iva:</strong>
+	  <%= @clienti.piva%>
+	</p>
+
+
+<hr>
+
+<%# per linkare alla pagina successiva, modificando un parametro di post, traducendo quindi il pramaetro "clienti.id" fornito in quest pagina in "clienti_id" come richiesto dalla pagina successiva %>
+<%= link_to 'Aggiungi Intervento', new_clienti_interventi_path(:clienti_id => @clienti.id) %>
+<br>
+<%= link_to 'Elenco Interventi', clienti_interventi_index_path(:clienti_id => @clienti.id) %>
+<br>
+<%= link_to 'Indietro', clienti_index_path %>
+
+
+
+<%= debug(params) %>

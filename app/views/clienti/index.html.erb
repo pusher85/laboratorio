@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col s6 offset-s3">
+		<span class="flow-text"><h2>Anagrafica Clienti</h2></span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12">
+		<%= link_to '<div><i class="material-icons">library_add</i>Aggiungi Cliente</div>'.html_safe, new_clienti_path %>
+		<hr>
+	</div>	
+</div>
+
+
+<div class="row">
+	<div class="col s12">
+		<table class="highlight centered">
+			<thead>
+			  <tr>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Telefono</th>
+				<th>Visualizza</th>
+				<th>Modifica</th>
+				<th>Elimina</th>
+			  </tr>
+		  	</thead>
+		 
+		 	<tbody>
+		  <% @clienti.each do |cliente| %>
+			<tr>
+			  <td><%= cliente.nome %></td>
+			  <td><%= cliente.email %></td>
+			  <td><%= cliente.telefono %></td>
+			  <td><%= link_to '<i class="material-icons">pageview</i>'.html_safe, clienti_path(cliente) %></td>
+			  <td><%= link_to '<i class="material-icons">open_in_browser</i>'.html_safe, edit_clienti_path(cliente) %></td>
+			  <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, clienti_path(cliente),
+	              method: :delete,
+	              data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		  <% end %>
+		  	</tbody>
+		</table>
+	</div>
+</div>
+ 
+	

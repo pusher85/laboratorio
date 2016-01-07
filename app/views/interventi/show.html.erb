@@ -1,0 +1,31 @@
+<h2>Cliente: <%= @clienti.nome %></h2>
+
+<h3>Dettaglio intervento</h3>
+
+<p>
+  <strong>Data Intervento:</strong>
+  <%= @interventi.data.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+	<strong>Durata</strong>
+	<%= @interventi.durata %> ore
+</p>
+
+<p>
+	<strong>Descrizione Intervento</strong>
+	<%= @interventi.intervento %>
+</p>
+
+<p>
+	<strong>Annotazioni:</strong>
+	<%= @interventi.note %>
+</p>
+
+<%= link_to 'Modifica', edit_clienti_interventi_path(:id => @interventi.id) %>
+<br>
+<%= link_to 'Elimina Intervento', clienti_interventi_path(:id => @interventi.id), method: :delete, data: { confirm: 'Sicuro di voler eliminare?' } %></td>
+<br>
+<%= link_to "Invia Comunicazione", new_clienti_interventi_comunicazioni_path(:interventi_id => @interventi.id) %>
+<hr>
+<%= link_to '<i class="small material-icons">fast_rewind</i>Indietro'.html_safe, clienti_interventi_index_path(@clienti.id) %>

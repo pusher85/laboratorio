@@ -1,0 +1,47 @@
+
+<div class="row">
+	<div class="col s8 offset-s2" align="center">
+		<span class="flow-text"><h2>Interventi per: <br><%= @clienti.nome %></h2></span>
+		<hr>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12">
+		<table class="highlight centered">
+			<thead>
+				<tr>
+					<th>Data</th>
+					<th>Intervento</th>
+					<th>vedi</th>
+					<th>stato</th>
+					<th>SMS</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @interventi.each do |intervento| %>
+
+				<tr>
+					<td><%= intervento.data %></td>
+					<td><%= intervento.intervento %></td>
+					<td><%= link_to '<i class="material-icons">pageview</i>'.html_safe, clienti_interventi_path(:id => intervento.id) %></td>
+					<td><% if intervento.chiuso == false %>
+						<%= image_tag("warning_32.png") %>
+						<% end %>
+					</td>
+					<td><%= link_to 'spedisci', clienti_interventi_sms_path(:interventi_id => intervento.id) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<hr>
+
+<%= link_to 'Indietro', clienti_path(@clienti.id) %>
+
+
+<%= debug(params) %>

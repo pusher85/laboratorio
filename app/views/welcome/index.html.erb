@@ -1,0 +1,13 @@
+<h1>Welcome#idex</h1>
+<p>Find me in app/views/welcome/idex.html.erb</p>
+
+<br>
+<p>Clicca <%= link_to 'quì', controller: 'clienti' %> per la lista dei clienti</p>
+<hr>
+<p>Ci sono <%= @conta_aperti %> interventi aperti</p>
+<p>Clicca <%= link_to 'quì', welcome_aperti_path %> per visualizzarli</p>
+<hr>
+<p>Hai un credito residuo per gli sms di €<%= @credito_skebby.round(2) %></p>
+<hr>
+
+<%= debug(params) %>
