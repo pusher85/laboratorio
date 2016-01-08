@@ -15,7 +15,8 @@
 					<th>Intervento</th>
 					<th>vedi</th>
 					<th>stato</th>
-					<th>SMS</th>
+					<th>Feedback</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -23,7 +24,7 @@
 				<% @interventi.each do |intervento| %>
 
 				<tr>
-					<td><%= intervento.data %></td>
+					<td><%= intervento.data.strftime("%d/%m/%Y") %></td>
 					<td><%= intervento.intervento %></td>
 					<td><%= link_to '<i class="material-icons">pageview</i>'.html_safe, clienti_interventi_path(:id => intervento.id) %></td>
 					<td><% if intervento.chiuso == false %>
@@ -31,6 +32,12 @@
 						<% end %>
 					</td>
 					<td><%= link_to 'spedisci', clienti_interventi_sms_path(:interventi_id => intervento.id) %></td>
+					<td>
+						<div class="chip">
+							<%= image_tag("sms_128.png") %>
+							<%= intervento.tot_comunicazioni %>
+					  	</div>
+					</td>	
 				</tr>
 				<% end %>
 			</tbody>

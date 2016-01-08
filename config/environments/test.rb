@@ -38,8 +38,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   Skuby.setup do |config|
-    config.method = 'send_sms_classic' #default
-    config.username = 'inserisci_username'
+    config.username = 'francescobucci'
+    config.password = 'stocazzo'
     config.password = 'inserisci_password'
     config.sender_string = 'company' #optional
     config.sender_number = '39329900000' #optional

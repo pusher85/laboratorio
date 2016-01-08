@@ -5,8 +5,10 @@ class InterventiController < ApplicationController
 	
 	def index
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.where(cliente_id: params[:clienti_id]).order("data DESC")
-		#@esitosms = 
+		#@interventi = Interventi.where(cliente_id: params[:clienti_id]).order("data DESC")
+		#@sms_inviati = Comunicazioni.where(tipo: 'sms', interventi_id: @interventi).count
+		@interventi = Interventi.select("interventis.id, interventis.data, interventis.intervento, COUNT(comunicazionis.id) AS tot_comunicazioni, interventis.chiuso").joins('LEFT OUTER JOIN comunicazionis ON interventis.id = comunicazionis.interventi_id').where(cliente_id: params[:clienti_id]).group("interventis.id").order("interventis.data DESC")
+		#@aperti = Interventi.select("interventis.data, interventis.intervento, clientis.nome, interventis.cliente_id, interventis.id").joins('INNER JOIN clientis ON interventis.cliente_id = clientis.id').where(chiuso: false).order("data ASC")
 	end
 
 

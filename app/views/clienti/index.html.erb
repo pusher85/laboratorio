@@ -36,7 +36,7 @@
 			  <td><%= link_to '<i class="material-icons">open_in_browser</i>'.html_safe, edit_clienti_path(cliente) %></td>
 			  <td><%= link_to '<i class="material-icons">delete</i>'.html_safe, clienti_path(cliente),
 	              method: :delete,
-	              data: { confirm: 'Are you sure?' } %></td>
+	              data: { confirm: 'Sicuro di voler eliminare il cliente? Non è reversibile' } %></td>
 			</tr>
 		  <% end %>
 		  	</tbody>

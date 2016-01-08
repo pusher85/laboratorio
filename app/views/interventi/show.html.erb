@@ -29,3 +29,6 @@
 <%= link_to "Invia Comunicazione", new_clienti_interventi_comunicazioni_path(:interventi_id => @interventi.id) %>
 <hr>
 <%= link_to '<i class="small material-icons">fast_rewind</i>Indietro'.html_safe, clienti_interventi_index_path(@clienti.id) %>
+
+<br>
+<%= debug(params) %>

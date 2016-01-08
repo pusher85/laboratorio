@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106220936) do
+ActiveRecord::Schema.define(version: 20160108172740) do
 
   create_table "clientis", force: true do |t|
     t.string   "nome"
@@ -25,16 +25,14 @@ ActiveRecord::Schema.define(version: 20160106220936) do
   end
 
   create_table "comunicazionis", force: true do |t|
-    t.integer  "interventi_id"
     t.text     "tipo"
     t.datetime "data"
     t.text     "destinatario"
     t.text     "testo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "interventi_id"
   end
-
-  add_index "comunicazionis", ["interventi_id"], name: "index_comunicazionis_on_interventi_id"
 
   create_table "interventis", force: true do |t|
     t.integer  "cliente_id"
@@ -48,6 +46,6 @@ ActiveRecord::Schema.define(version: 20160106220936) do
     t.boolean  "chiuso"
   end
 
-  add_index "interventis", ["cliente_id"], name: "index_interventis_on_cliente_id"
+  add_index "interventis", ["cliente_id"], name: "index_interventis_on_cliente_id", using: :btree
 
 end
