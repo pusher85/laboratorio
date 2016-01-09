@@ -46,9 +46,13 @@
 </div>
 
 
-<hr>
+<div class="divider"></div>
 
-<%= link_to 'Indietro', clienti_path(@clienti.id) %>
+<div class="row">
+	<ul class="lista-pulsanti">
+		<li><%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_path(@clienti.id), class: 'waves-effect waves-light btn' %></li>
+	</ul>
+</div>
 
 
 <%= debug(params) %>

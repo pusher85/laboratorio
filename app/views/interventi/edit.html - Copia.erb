@@ -6,19 +6,24 @@
 <div class="divider"></div>
 
 
-<%= render'gestione_errori' %>
-
-
-
-
-<%= render 'form', { url: clienti_interventi_path(@clienti, @interventi), method: :patch } %>
 
 
 
 
 <%= form_for :interventi, url: clienti_interventi_path(@clienti, @interventi), method: :patch do |f| %>
 
-	<%= render'gestione_errori' %>
+	<% if @interventi.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@interventi.errors.count, "error") %> impediscono l'inserimento dell'intervento:
+      </h2>
+      <ul>
+        <% @interventi.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 
 
 	<p>Cliente: <%= @clienti.nome %> - [<%= @clienti.id %>]</p>

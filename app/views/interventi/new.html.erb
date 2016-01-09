@@ -1,5 +1,14 @@
-<h1>Nuovo Intervento</h1>
-<br>
+<div class="row">
+	<div class="col s12 center-align">
+		<h3>Nuovo Intervento</h3>
+	</div>
+</div>
+<div class="divider"></div>
+
+
+
+
+<%= render'gestione_errori' %>
 
 
 
@@ -7,13 +16,11 @@
 <%= render 'form' %>
 
 
+
+
+
+<div class="divider"></div>
+
+
+
 <%= debug(params) %>
-
-
-
-
-<hr>
-
-<%#= link_to 'Indietro', clienti_index_path %>
-<%= link_to 'Indietro', clienti_path(:id => @clienti ) %>
-
