@@ -1,34 +1,82 @@
-<h2>Cliente: <%= @clienti.nome %></h2>
+<div class="row">
+	<div class="col 6s">
+		<h3>Dettaglio intervento</h3>
+		<h3>Cliente: <%= @clienti.nome %></h3>
+	</div>
+</div>
 
-<h3>Dettaglio intervento</h3>
+<div class="divider"></div>
 
-<p>
-  <strong>Data Intervento:</strong>
-  <%= @interventi.data.strftime("%d/%m/%Y") %>
-</p>
+<div class="row">
+	<div class="col s6 offset-s6">
+		<div style="position: relative;">
+		  <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px;">
+		    <a class="btn-floating btn-large red">
+		      <i class="large mdi-navigation-menu"></i>
+		    </a>
+		    <ul>
+		    	<li><%= link_to '<i class="material-icons" title="Modifica">mode_edit</i>'.html_safe, edit_clienti_interventi_path(:id => @interventi.id), class: 'btn-floating green' %></li>
+		    	<li><%= link_to '<i class="material-icons" title="Elimina">delete</i>'.html_safe, clienti_interventi_path(:id => @interventi.id), method: :delete, data: { confirm: 'Sicuro di voler eliminare?' }, class: 'btn-floating red' %></td></li>
+		    	<li><%= link_to '<i class="material-icons" title="Invia Comunicazione">textsms</i>'.html_safe, new_clienti_interventi_comunicazioni_path(:interventi_id => @interventi.id), class: 'btn-floating green' %></li>
+		    </ul>
+		  </div>
+		</div>
+	</div>
+</div>
 
-<p>
-	<strong>Durata</strong>
-	<%= @interventi.durata %> ore
-</p>
+<blockquote>
+<div class="row">
+	<div class="col s6">
+	  <strong>Data Intervento:</strong>
+	  <%= @interventi.data.strftime("%d/%m/%Y") %>
+  	</div>
+</div>
 
-<p>
-	<strong>Descrizione Intervento</strong>
-	<%= @interventi.intervento %>
-</p>
+<div class="row">
+	<div class="col s6">
+		<strong>Durata</strong>
+		<%= @interventi.durata %> ore
+	</div>
+</div>
 
-<p>
-	<strong>Annotazioni:</strong>
-	<%= @interventi.note %>
-</p>
+<div class="row">
+	<div class="col s6">
+		<strong>Descrizione Intervento</strong>
+		<%= @interventi.intervento %>
+	</div>
+</div>
 
+
+<div class="row">
+	<div class="col s6">
+		<strong>Annotazioni:</strong>
+		<%= @interventi.note %>
+	</div>
+</div>
+
+</blockquote>
+
+<div class="divider"></div>
+
+
+
+<!--
 <%= link_to 'Modifica', edit_clienti_interventi_path(:id => @interventi.id) %>
 <br>
 <%= link_to 'Elimina Intervento', clienti_interventi_path(:id => @interventi.id), method: :delete, data: { confirm: 'Sicuro di voler eliminare?' } %></td>
 <br>
 <%= link_to "Invia Comunicazione", new_clienti_interventi_comunicazioni_path(:interventi_id => @interventi.id) %>
 <hr>
-<%= link_to '<i class="small material-icons">fast_rewind</i>Indietro'.html_safe, clienti_interventi_index_path(@clienti.id) %>
+-->
+
+
+
+
+
+
+<div class="divider"></div>
+
+<%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_interventi_index_path(@clienti.id), class: 'waves-effect waves-light btn' %>
 
 <br>
 <%= debug(params) %>

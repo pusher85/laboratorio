@@ -21,7 +21,7 @@
 		    <%# else %>
 			    <li><%#= link_to "Login", new_user_session_path %></li>
 			    <li><%#= link_to "Registrazione", new_user_registration_path %></li>
-			    <li><%= link_to "Home", root_path %>
+			    <li><%= link_to 'Home', root_path %></li>
 			    <li><%= link_to "Elenco Clienti", controller: 'clienti' %></li>
 			    <li><%= link_to "Interventi Aperti", welcome_aperti_path %></li>
 			<%# end %>

@@ -18,33 +18,33 @@
 
 
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s12 hoverable">
         <i class="material-icons prefix">account_circle</i>
-        <%= f.label :nome %><br><%= f.text_field :nome %>
+        <%= f.label :nome %><br><%= f.text_field :nome, :length=>"254" %>
       </div>
     </div>
   
 
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col col s12 m6 l6 hoverable">
       <i class="material-icons prefix">subtitles</i>
-      <%= f.label :codfisc %><br><%= f.text_field :codfisc %>
+      <%= f.label :codfisc %><br><%= f.text_field :codfisc, :length=>"16", :maxlength=>"16" %>
     </div>
 
-    <div class="input-field col s6">
+    <div class="input-field col s12 m6 l6 hoverable">
       <i class="material-icons prefix">work</i>
-      <%= f.label :piva %><br><%= f.text_field :piva %>
+      <%= f.label :piva %><br><%= f.text_field :piva, :length=>"16", :maxlength=>"18" %>
     </div>  
   </div>
   
 
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12 m6 l6 hoverable">
       <i class="material-icons prefix">phone</i>
-      <%= f.label :telefono %><br><%= f.text_field :telefono %>
+      <%= f.label :telefono %><br><%= f.text_field :telefono, :length=>"15" %>
     </div>
 
-    <div class="input-field col s6">
+    <div class="input-field col s12 m6 l6 hoverable">
       <i class="material-icons prefix">email</i>
       <%= f.label :email %><br><%= f.text_field :email %>
     </div>
@@ -53,13 +53,18 @@
 
   
   <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s12 hoverable">
       <i class="material-icons prefix">speaker_notes</i>
       <%= f.label :note %><br><%= f.text_area :note, class: 'materialize-textarea' %>
     </div>
   </div>
  
-  <%= f.submit %>
-	<%#= f.submit 'Salva', :class => 'btn waves-effect waves-light'  %>
+  <div class="row">
+    <div class="col s3">
+      <%= f.submit 'Aggiungi', :class => 'btn waves-effect waves-light green' %>
+      <%#= f.submit 'Salva', :class => 'btn waves-effect waves-light'  %>
+    </div>
+  </div>
+  
   
 <% end %>

@@ -1,23 +1,79 @@
-	<p>
-	  <strong>Nome:</strong>
-	  <%= @clienti.nome %>
-	</p>
+
+<div class="row">
+	<div class="col s6">
+		<h3>Anagrafica Cliente</h3>
+	</div>
+</div>
+
+
+
+
+<!-- 
+<div class="row">
+	<div class="col s8">
+		<ul class="collection with-header">
+			<li class="collection-header"><h4>Cliente: <%= @clienti.nome %></h4></li>
+			<li class="collection-item"><span>P.iva: </span><%= @clienti.piva%></li>
+			<li class="collection-item"><span>C.F.: </span><%= @clienti.codfisc%></li>
+			<li class="collection-item"><span>E-Mail: </span><%= @clienti.email%></li>
+			<li class="collection-item"><span>Telefono: </span><%= @clienti.telefono%></li>
+		</ul>
+	</div>
+</div>
+-->
+
+<div class="row">
+	<div class="col s12">
+		<div class="card blue-grey darken-1">
+			<div class="card-content">
+				<span class="card-title"><h4>Cliente: <%= @clienti.nome %></h4></span>
+			 	
+			 	<ul class="collection">
+					
+					<li class="collection-item"><span>P.iva: </span><%= @clienti.piva%></li>
+					<li class="collection-item"><span>C.F.: </span><%= @clienti.codfisc%></li>
+					<li class="collection-item"><span>E-Mail: </span><%= @clienti.email%></li>
+					<li class="collection-item"><span>Telefono: </span><%= @clienti.telefono%></li>
+				</ul>
+
+
+			</div>
+			<!--
+			<div class="card-action">
+				<a href="#">This is a link</a>
+				<a href="#">This is a link</a>
+			</div>
+			-->
+		</div>
+	</div>
+</div>
+
+
 	 
-	<p>
-	  <strong>Partita Iva:</strong>
-	  <%= @clienti.piva%>
-	</p>
+	
 
 
-<hr>
-
+<div class="divider"></div>
+<!--
 <%# per linkare alla pagina successiva, modificando un parametro di post, traducendo quindi il pramaetro "clienti.id" fornito in quest pagina in "clienti_id" come richiesto dalla pagina successiva %>
-<%= link_to 'Aggiungi Intervento', new_clienti_interventi_path(:clienti_id => @clienti.id) %>
+<%#= link_to 'Aggiungi Intervento', new_clienti_interventi_path(:clienti_id => @clienti.id) %>
 <br>
-<%= link_to 'Elenco Interventi', clienti_interventi_index_path(:clienti_id => @clienti.id) %>
+<%#= link_to 'Elenco Interventi', clienti_interventi_index_path(:clienti_id => @clienti.id) %>
 <br>
-<%= link_to 'Indietro', clienti_index_path %>
+-->
+<div class="row">
+	<div class="col s3">
+		<%#= link_to 'Indietro', clienti_index_path %>
+		<%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_index_path, class: 'waves-effect waves-light btn' %>
+	</div>
 
+	<div class="col s3">
+		<%= link_to '<i class="material-icons left">fast_rewind</i>Nuovo Intervento'.html_safe, new_clienti_interventi_path(:clienti_id => @clienti.id), class: 'waves-effect waves-light btn' %>
+	</div>
 
+	<div class="col s3">
+		<%= link_to '<i class="material-icons left">fast_rewind</i>Elenco Interventi'.html_safe, clienti_interventi_index_path(:clienti_id => @clienti.id), class: 'waves-effect waves-light btn' %>
+	</div>
+</div>
 
 <%= debug(params) %>
