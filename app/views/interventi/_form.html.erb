@@ -3,11 +3,23 @@
 
 	
     
-<%= form_for :interventi, url: clienti_interventi_index_path do |f| %>
+<%#= form_for :interventi, url: clienti_interventi_index_path do |f| %>
 
-<%# if local_assigns.has_key? :url %>
-<%#= form_for :interventi, url: url do |f| %>
+<% if local_assigns.has_key? :url %>
+  <%= form_for :interventi, url: url, method: method do |f| %>
 
+  <%#= form_for :interventi, url: clienti_interventi_index_path do |f| %>
+
+  <%# end %>
+
+  <%# elsif local_assigns.has_key? :edita %>
+  <%#= form_for :interventi, url: clienti_interventi_path(@clienti, @interventi), method: :patch do |f| %>
+  <%# end %>
+
+
+
+
+<%#= form_for :interventi, url: clienti_interventi_index_path, method: :none do |f| %>
     <div class="row">
       <div class="col s12">
         <h4>Cliente: <%= @clienti.nome %> - [<%= @clienti.id %>]</h4>
@@ -99,4 +111,4 @@ $('.datepicker').pickadate({
   });
 </script>
 
-<%# end %>
+<% end %>
