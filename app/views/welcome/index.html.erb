@@ -9,5 +9,7 @@
 <hr>
 <p>Hai un credito residuo per gli sms di €<%= @credito_skebby.round(2) %></p>
 <hr>
+<p><%= l Time.now, format: :short %></p>
 
+Locale = <%= I18n.locale %>
 <%= debug(params) %>

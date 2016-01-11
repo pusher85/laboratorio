@@ -46,6 +46,6 @@ ActiveRecord::Schema.define(version: 20160108172740) do
     t.boolean  "chiuso"
   end
 
-  add_index "interventis", ["cliente_id"], name: "index_interventis_on_cliente_id", using: :btree
+  add_index "interventis", ["cliente_id"], name: "index_interventis_on_cliente_id"
 
 end
