@@ -16,6 +16,7 @@ class ComunicazioniController < ApplicationController
 	def new
 		@clienti = Clienti.find(params[:clienti_id])
 		@interventi = Interventi.find(params[:interventi_id])
+		@comunicazioni = Comunicazioni.new
 	end
 
 
@@ -51,6 +52,11 @@ class ComunicazioniController < ApplicationController
 
 
 	def destroy
+		@clienti = Clienti.find(params[:clienti_id])
+		@interventi = Interventi.find(params[:interventi_id])
+		@comunicazioni = Comunicazioni.find(params[:id])
+		@comunicazioni.destroy
+		redirect_to clienti_interventi_path(params[:clienti_id])
 	end
 
 
