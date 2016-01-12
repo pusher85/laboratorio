@@ -14,7 +14,13 @@ class InterventiController < ApplicationController
 
 	def show
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.find(params[:id])
+		@interventi = Interventi.where(cliente_id: @clienti).find(params[:id])
+
+		rescue ActiveRecord::RecordNotFound  
+		 flash[:errore] = "Errore nella query"
+		 redirect_to :controller => "welcome", :action => "index"
+		return
+
 	end
 
 
@@ -27,7 +33,11 @@ class InterventiController < ApplicationController
 
 	def edit
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.find(params[:id])
+		@interventi = Interventi.where(cliente_id: @clienti).find(params[:id])
+		rescue ActiveRecord::RecordNotFound  
+		 flash[:errore] = "Errore nella query"
+		 redirect_to :controller => "welcome", :action => "index"
+		return
 	end
 
 
@@ -44,25 +54,25 @@ class InterventiController < ApplicationController
 
 	def update
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.find(params[:id])
+		@interventi = Interventi.where(cliente_id: @clienti).find(params[:id])
 		if @interventi.update(parametri_intervento)
-	    redirect_to clienti_interventi_path(:id => @interventi)
-	  else
-	    render 'edit'
-	  end
+			redirect_to clienti_interventi_path(:id => @interventi)
+		else
+			render 'edit'
+		end
 	end
 
 
 	def destroy
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.find(params[:id])
+		@interventi = Interventi.where(cliente_id: @clienti).find(params[:id])
 		@interventi.destroy
 		redirect_to clienti_interventi_index_path(params[:clienti_id])
 	end
 
 	def sms
 		@clienti = Clienti.find(params[:clienti_id])
-		@interventi = Interventi.find(params[:interventi_id])
+		@interventi = Interventi.where(cliente_id: @clienti).find(params[:interventi_id])
 		@sms = Skuby::Gateway.send_sms('Messaggio di prova', '393291529641')
 		if @sms.success? #=> true
 			redirect_to clienti_interventi_index_path
@@ -75,6 +85,7 @@ class InterventiController < ApplicationController
 		def parametri_intervento
 			params.require(:interventi).permit(:cliente_id, :data, :apparecchiatura, :intervento, :durata, :note, :chiuso)
 		end
+
 		
 
 end
