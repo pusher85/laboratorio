@@ -6,6 +6,11 @@ class ClientiController < ApplicationController
 
 	def show
 		@clienti = Clienti.find(params[:id])
+		
+		rescue ActiveRecord::RecordNotFound  
+		 flash[:errore] = "Errore nella query - clienti"
+		 redirect_to :controller => "welcome", :action => "index"
+		return
 	end
 
 	def new
@@ -14,6 +19,11 @@ class ClientiController < ApplicationController
 
 	def edit
 		@clienti = Clienti.find(params[:id])
+
+		rescue ActiveRecord::RecordNotFound  
+		 flash[:errore] = "Errore nella query - clienti"
+		 redirect_to :controller => "welcome", :action => "index"
+		return
 	end
 
 	def create

@@ -1,28 +1,14 @@
-<%= form_for :clienti, url: clienti_index_path, class: "col s12" do |f| %>
-    
+<%#= form_for :clienti, url: clienti_index_path, class: "col s12" do |f| %>
+<% if local_assigns.has_key? :url %>
+  <%= form_for :clienti, url: url, method: method, class: "col s12" do |f| %>   
 
-    <% if @clienti.errors.any? %>
-    <div class="row">
-      <div class="col s12">
-        <div id="error_explanation">
-          <h4><%= pluralize(@clienti.errors.count, "error") %> impediscono il salvataggio del cliente: </h4>
-          <ul class="collection">
-            <% @clienti.errors.full_messages.each do |msg| %>
-              <li class="collection-item"><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+
+  <div class="row">
+    <div class="input-field col s12 hoverable">
+      <i class="material-icons prefix">account_circle</i>
+      <%= f.label :nome %><br><%= f.text_field :nome, :length=>"254" %>
     </div>
-    <% end %>
-
-
-    <div class="row">
-      <div class="input-field col s12 hoverable">
-        <i class="material-icons prefix">account_circle</i>
-        <%= f.label :nome %><br><%= f.text_field :nome, :length=>"254" %>
-      </div>
-    </div>
+  </div>
   
 
   <div class="row">
@@ -50,7 +36,6 @@
     </div>
   </div>
 
-
   
   <div class="row">
     <div class="input-field col s12 hoverable">
@@ -59,15 +44,14 @@
     </div>
   </div>
  
+ 
   <div class="row">
-      <ul class="lista-pulsanti">
-        <li><%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_index_path, class: 'waves-effect waves-light btn' %></li>
-        <li><%= f.submit 'Aggiungi', :class => 'btn waves-effect waves-light green' %></li>
-      </ul>
-      
-    
-    
+    <ul class="lista-pulsanti">
+      <li><%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_index_path, class: 'waves-effect waves-light btn' %></li>
+      <li><%= f.submit 'Salva', :class => 'btn waves-effect waves-light green' %></li>
+    </ul>
   </div>
   
   
+  <% end %>
 <% end %>

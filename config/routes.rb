@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   
+  #resources :contrattis
+
   root 'welcome#index'
   get 'welcome/aperti', :path => "aperti"
   #post 'interventi/sms'
   
 
   resources :clienti do
+    resources :contrattis
     resources :interventi do
       get :sms
         resources :comunicazioni

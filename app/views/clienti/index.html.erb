@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col s6 offset-s3">
-		<span class="flow-text"><h2>Anagrafica Clienti</h2></span>
+	<div class="col s12">
+		<span class="center-align"><h3>Anagrafica Clienti</h3></span>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col s12">
-		<%= link_to '<i class="material-icons" title="Aggiungi Cliente">add_circle_outline</i>'.html_safe, new_clienti_path, class: 'btn-floating btn-large waves-effect waves-light green' %>
+	<div class="col s3">
+		<%= link_to '<i class="material-icons" title="Aggiungi Cliente">add_circle_outline</i>'.html_safe, new_clienti_path, class: 'btn-floating btn-small waves-effect waves-light green' %>
 	</div>	
 </div>
 
@@ -29,9 +29,9 @@
 		 	<tbody>
 		  <% @clienti.each do |cliente| %>
 			<tr>
-			  <td><%= cliente.nome %></td>
-			  <td><%= cliente.email %></td>
-			  <td><%= cliente.telefono %></td>
+			  <td><div class="truncate"><%= cliente.nome %></div></td>
+			  <td><div class="truncate"><%= cliente.email %></div></td>
+			  <td><div class="truncate"><%= cliente.telefono %></div></td>
 			  <td><%= link_to '<i class="material-icons" title="visualizza">pageview</i>'.html_safe, clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light green' %></td>
 			  <td><%= link_to '<i class="material-icons" title="modifica">open_in_browser</i>'.html_safe, edit_clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light orange' %></td>
 			  <td><%= link_to '<i class="material-icons" title="elimina">delete</i>'.html_safe, clienti_path(cliente),

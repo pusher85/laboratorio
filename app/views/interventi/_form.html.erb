@@ -8,24 +8,11 @@
 <% if local_assigns.has_key? :url %>
   <%= form_for :interventi, url: url, method: method do |f| %>
 
-  <%#= form_for :interventi, url: clienti_interventi_index_path do |f| %>
-
-  <%# end %>
-
-  <%# elsif local_assigns.has_key? :edita %>
-  <%#= form_for :interventi, url: clienti_interventi_path(@clienti, @interventi), method: :patch do |f| %>
-  <%# end %>
-
-
-
-
-<%#= form_for :interventi, url: clienti_interventi_index_path, method: :none do |f| %>
     <div class="row">
       <div class="col s12">
         <h4>Cliente: <%= @clienti.nome %> - [<%= @clienti.id %>]</h4>
       </div>
     </div>
-
 
 
     <div class="row">
@@ -43,10 +30,9 @@
     </div>
 
 
-
     <div class="row">
       <div class="col s10 input-field hoverable">
-        <%= f.label "Descrizione INtervento" %><br><%= f.text_area :intervento, maxlength: 200, class: 'materialize-textarea' %>
+        <%= f.label "Descrizione Intervento" %><br><%= f.text_area :intervento, maxlength: 200, class: 'materialize-textarea' %>
       </div>
 
       <div class="col s2 input-field hoverable">
@@ -62,41 +48,31 @@
     </div>
 
 
-<div class="row">
-  <div class="col s4">
-
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Stato Intervento</span>
-        <div class="switch">
-          <label>
-            Aperto
-            <%= f.check_box :chiuso, {:class => "myclass", :style => "mystyle"}, "1" %>
-            <span class="lever"></span>
-            Chiuso
-          </label>
+    <div class="row">
+      <div class="col s4">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Stato Intervento</span>
+            <div class="switch">
+              <label>
+                Aperto
+                <%= f.check_box :chiuso, {:class => "myclass", :style => "mystyle"}, "1" %>
+                <span class="lever"></span>
+                Chiuso
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
 
-
-<div class="row">
-  <ul class="lista-pulsanti">
-    <li><%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_path(:id => @clienti.id), class: 'waves-effect waves-light btn' %></li>
-    <li><%= f.submit 'Salva', :class => 'btn waves-effect waves-light green' %></li>
-  </ul>
-
-
-</div>
-
-
-
-
-
-
+    <div class="row">
+      <ul class="lista-pulsanti">
+        <li><%= link_to '<i class="material-icons left">fast_rewind</i>Indietro'.html_safe, clienti_path(:id => @clienti.id), class: 'waves-effect waves-light btn' %></li>
+        <li><%= f.submit 'Salva', :class => 'btn waves-effect waves-light green' %></li>
+      </ul>
+    </div>
 
 <% end %>
 

@@ -22,7 +22,6 @@
 
 			<tbody>
 				<% @interventi.each do |intervento| %>
-
 				<tr>
 					<td><%= intervento.data.strftime("%d/%m/%Y") %></td>
 					<td><%= intervento.intervento %></td>
@@ -35,7 +34,6 @@
 						<%#= link_to 'spedisci', clienti_interventi_sms_path(:interventi_id => intervento.id) %>
 						<%= link_to '<i class="material-icons" title="Invia Comunicazione">textsms</i>'.html_safe, new_clienti_interventi_comunicazioni_path(:interventi_id => intervento.id) %>
 					</td>
-						
 					<td>
 						<div class="chip">
 							<%= image_tag("sms_128.png") %>
