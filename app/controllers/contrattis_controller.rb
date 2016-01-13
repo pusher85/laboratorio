@@ -4,7 +4,12 @@ class ContrattisController < ApplicationController
   # GET /contrattis
   # GET /contrattis.json
   def index
-    @contrattis = Contratti.all
+    @clienti = Clienti.find(params[:clienti_id])
+    #@contrattis = Contratti.all
+    #@contrattis = Contratti.where(cliente_id: params[:clienti_id])
+    #clienti_id
+    @contrattis = Contratti.where(@clienti_id)
+
   end
 
   # GET /contrattis/1
@@ -20,16 +25,19 @@ class ContrattisController < ApplicationController
 
   # GET /contrattis/1/edit
   def edit
+     @clienti = Clienti.find(params[:clienti_id])
   end
 
   # POST /contrattis
   # POST /contrattis.json
   def create
+    @clienti = Clienti.find(params[:clienti_id])
     @contratti = Contratti.new(contratti_params)
 
     respond_to do |format|
       if @contratti.save
-        format.html { redirect_to @contratti, notice: 'Contratti was successfully created.' }
+        #format.html { redirect_to @contratti, notice: 'Contratti was successfully created.' }
+        format.html { redirect_to clienti_contrattis_path(@clienti), notice: 'Contratti was successfully created.' }
         format.json { render :show, status: :created, location: @contratti }
       else
         format.html { render :new }
@@ -41,9 +49,10 @@ class ContrattisController < ApplicationController
   # PATCH/PUT /contrattis/1
   # PATCH/PUT /contrattis/1.json
   def update
+    @clienti = Clienti.find(params[:clienti_id])
     respond_to do |format|
       if @contratti.update(contratti_params)
-        format.html { redirect_to @contratti, notice: 'Contratti was successfully updated.' }
+        format.html { redirect_to clienti_contrattis_path(:clienti_id => @clienti), notice: 'Contratti was successfully updated.' }
         format.json { render :show, status: :ok, location: @contratti }
       else
         format.html { render :edit }
@@ -57,7 +66,7 @@ class ContrattisController < ApplicationController
   def destroy
     @contratti.destroy
     respond_to do |format|
-      format.html { redirect_to contrattis_url, notice: 'Contratti was successfully destroyed.' }
+      format.html { redirect_to clienti_contrattis_path, notice: 'Contratti was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
