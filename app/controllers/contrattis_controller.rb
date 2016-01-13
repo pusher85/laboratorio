@@ -5,11 +5,13 @@ class ContrattisController < ApplicationController
   # GET /contrattis.json
   def index
     @clienti = Clienti.find(params[:clienti_id])
-    #@contrattis = Contratti.all
-    #@contrattis = Contratti.where(cliente_id: params[:clienti_id])
-    #clienti_id
-    #@contrattis = Contratti.where(@clienti_id)
     @contrattis = Contratti.where(clienti_id: @clienti)
+
+    # Calcolo ore residue per contratti acquistati
+    @acquistate = Contratti.where(clienti_id: @clienti).sum(:ore)
+    @ore_usate = Interventi.where(:cliente_id => @clienti).sum(:durata)
+    @ore_rimanenti = @acquistate-@ore_usate
+
 
   end
 
