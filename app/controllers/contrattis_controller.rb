@@ -8,7 +8,8 @@ class ContrattisController < ApplicationController
     #@contrattis = Contratti.all
     #@contrattis = Contratti.where(cliente_id: params[:clienti_id])
     #clienti_id
-    @contrattis = Contratti.where(@clienti_id)
+    #@contrattis = Contratti.where(@clienti_id)
+    @contrattis = Contratti.where(clienti_id: @clienti)
 
   end
 

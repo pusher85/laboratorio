@@ -23,20 +23,22 @@
 				<th>Visualizza</th>
 				<th>Modifica</th>
 				<th>Elimina</th>
+				<th>Contratti</th>
 			  </tr>
 		  	</thead>
 		 
 		 	<tbody>
 		  <% @clienti.each do |cliente| %>
 			<tr>
-			  <td><div class="truncate"><%= cliente.nome %></div></td>
-			  <td><div class="truncate"><%= cliente.email %></div></td>
-			  <td><div class="truncate"><%= cliente.telefono %></div></td>
-			  <td><%= link_to '<i class="material-icons" title="visualizza">pageview</i>'.html_safe, clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light green' %></td>
-			  <td><%= link_to '<i class="material-icons" title="modifica">open_in_browser</i>'.html_safe, edit_clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light orange' %></td>
-			  <td><%= link_to '<i class="material-icons" title="elimina">delete</i>'.html_safe, clienti_path(cliente),
-	              method: :delete,
-	              data: { confirm: 'Sicuro di voler eliminare il cliente? Non è reversibile' }, class: 'btn-floating btn-small waves-effect waves-light red' %></td>
+				<td><div class="truncate"><%= cliente.nome %></div></td>
+				<td><div class="truncate"><%= cliente.email %></div></td>
+				<td><div class="truncate"><%= cliente.telefono %></div></td>
+				<td><%= link_to '<i class="material-icons" title="visualizza">pageview</i>'.html_safe, clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light green' %></td>
+				<td><%= link_to '<i class="material-icons" title="modifica">open_in_browser</i>'.html_safe, edit_clienti_path(cliente), class: 'btn-floating btn-small waves-effect waves-light orange' %></td>
+				<td><%= link_to '<i class="material-icons" title="elimina">delete</i>'.html_safe, clienti_path(cliente),
+				  method: :delete,
+				  data: { confirm: 'Sicuro di voler eliminare il cliente? Non è reversibile' }, class: 'btn-floating btn-small waves-effect waves-light red' %></td>
+				<td><%= link_to '<i class="material-icons" title="contratti">book</i>'.html_safe, clienti_contrattis_path(cliente), class: 'btn-floating btn-small waves-effect waves-light green' %></td>  
 			</tr>
 		  <% end %>
 		  	</tbody>
